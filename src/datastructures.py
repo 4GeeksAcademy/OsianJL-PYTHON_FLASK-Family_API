@@ -25,14 +25,15 @@ class FamilyStructure:
         return randint(0, 99999999)
 
     def add_member(self, member):
+        member["id"] = self._generateId() 
         self._members.append(member)
-        return "ok"
+        return f"contact for {member} created"
 
     def delete_member(self, id):
         for member in self._members:
             if member["id"] == id:
                 self._members.remove(member) 
-                return "deleted"
+                return f"contact with ID: {id} deleted"
 
     def get_member(self, id):
         for member in self._members:
