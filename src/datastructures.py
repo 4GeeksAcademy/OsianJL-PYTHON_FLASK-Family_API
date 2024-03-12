@@ -27,18 +27,23 @@ class FamilyStructure:
     def add_member(self, member):
         member["id"] = self._generateId() 
         self._members.append(member)
-        return f"contact for {member} created"
+        return f"contact with ID: {member['id']} created"
 
     def delete_member(self, id):
         for member in self._members:
             if member["id"] == id:
-                self._members.remove(member) 
+                self._members.remove(member)
                 return f"contact with ID: {id} deleted"
-
+             
+        return f"el ID es incorrecto"
+            
+            
     def get_member(self, id):
         for member in self._members:
             if member["id"] == id: 
                 return member
+            
+        return f"Este ID es incorrecto"
         
 
     # this method is done, it returns a list with all the family members

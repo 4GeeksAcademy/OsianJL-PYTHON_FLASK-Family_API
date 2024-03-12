@@ -28,10 +28,9 @@ def sitemap():
 @app.route('/members', methods=['GET'])
 def show_all_members():
     my_members = jackson_family.get_all_members()
-    return jsonify(my_members)
+    return jsonify(message="Here you have all the members, Osián",data=my_members)
 
     
-
 @app.route('/member/<int:member_id>', methods=['GET'])
 def show_one_member(member_id):
     my_member_with_id = jackson_family.get_member(member_id)
@@ -40,12 +39,12 @@ def show_one_member(member_id):
 @app.route('/members', methods=['POST'])
 def create_one_member():
     new_member = jackson_family.add_member(request.json)
-    return jsonify(new_member)
-
+    return jsonify(message="You have included a new member, Osian",data=new_member)
 
 
 @app.route('/member/<int:member_id>', methods=['DELETE'])
 def delete_one_member(member_id):
+    print(member_id)
     delete_member_with_id = jackson_family.delete_member(member_id)
     return jsonify(delete_member_with_id)
 
